@@ -6,40 +6,34 @@
     <title>Demo</title>
 </head>
 <body>
-    <h1>Recommended Books</h1> 
-    
     <?php 
         $books = [
-            "Do Androids Dream of Electric Sheep",
-            "The Langoliers", 
-            "Hail Mary"
-        ];
-    ?> 
+            [
+                'name' => 'Do Androids Dream of Electric Sheep',
+                'author' => 'Philip K. Dick',
+                'purchaseUrl' => 'www.example.com',
+                'year' => 1987 
+            ], 
 
-<!-- Ideal PHP implementation (for long complex pages) --> 
+            [
+                'name' => 'Project Hail Mary',
+                'author' => 'Andy Weir',
+                'purchaseUrl' => 'www.example.com',
+                'year' => 2002
+            ]
+
+            ];
+    ?>
 
     <ul>
-        <?php foreach ($books as $book) : ?>
-            <li><?= $book ?></li>
-        <?php endforeach; ?> 
+        <?php foreach ($books as $book) : ?> 
+            <li> 
+                Name : <a href="<?= $book['purchaseUrl'] ?>">
+                <?= $book['name']?></a> <br>                
+                Author : <?= $book['author']?> <br> 
+                Year : <?= $book['year']?> <br>
+            </li>
+        <?php endforeach ?>
     </ul>
-
-<!-- Simple PHP implementation 
-    <ul>
-        <?php foreach ($books as $book) {
-            echo "<li>$book</li>"; 
-        } 
-        ?>
-    </ul>
--->
-
-<!-- Old Manual HTML method of creating list
-    <ul>
-        <li>Do Androids Dream of Electric Sheep</li>
-        <li>The Langoliers</li>
-        <li>Hail Mary</li>
-    </ul>
--->
-    <p>The second book in the list is <?= $books[1] ?> </p>
 </body>
 </html>
