@@ -124,13 +124,17 @@ $book[2] // get the third item in the books array
 
 Conditionals 
 
-Single Equal to assign value, triple equals to check equality. 
+Single Equal to assign value, 
+
+Triple equals sings  to check for  in conditional statement equality. 
 
 `if ($book['author'] === 'Andy Weir')`
 
-Functions - 
+## Functions -
 
 Created and defined as a blueprint, called later in code 
+
+### Named Function
 
 ```php
 function filterByAuthor($books, $author){
@@ -144,11 +148,17 @@ function filterByAuthor($books, $author){
 
 return $filteredBooks; 
 }
+
+filterByAuthor($books, 'Andy Weir') 
 ```
 
 Lambda Function - 
 
 An unnamed function written as an expression, can be cast into a variable and referenced through that variable name. 
+
+Since we are passing a function into a variable, we need the semi colon at the end to conclude it. 
+
+Also when we call the function, we call the variable `$filter`, rather than the function `filter()`. 
 
 ```php
 $filter = function ($items, $key, $value) {
@@ -165,9 +175,10 @@ $filter = function ($items, $key, $value) {
 		$filteredBooks = $filter($books, 'author' ,'Andy Weir');
 ```
 
-We can also pass other functions into functions this way 
+We can also pass other functions into functions this way.  In this example our function called `$filter` will accept an anonymous function which will allow us to more dynamically control the logic we are using to filter. 
 
 ```php
+#accept an anonymous function that we can use to control how to filter
 $filter = function ($items, $fn) {
 			$filteredItems = [];
 
@@ -178,7 +189,8 @@ $filter = function ($items, $fn) {
 			}
 			return $filteredItems;
 		};
-
+		
+		#We pass in a whole function as a parameter, we make it do a comparision rather than an equals 
 		$filteredBooks = $filter($books, function ($book) {
 			return $book['releaseYear'] >= 2000; 
 		});
